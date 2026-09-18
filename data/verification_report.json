@@ -1,0 +1,15 @@
+{
+  "total_apps": 100,
+  "confidence_high": 16,
+  "confidence_medium": 42,
+  "confidence_low": 42,
+  "fetch_ok": 93,
+  "fetch_failed": 7,
+  "verdict_breakdown": {
+    "Unclear": 31,
+    "Needs partnership": 30,
+    "Partial": 20,
+    "Buildable": 19
+  },
+  "requires_human_verification": 84
+}

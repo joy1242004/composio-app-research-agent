@@ -1,0 +1,583 @@
+[
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://salesforce.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 2,
+    "name": "HubSpot",
+    "reason": "confidence=Medium",
+    "evidence": "https://hubspot.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 5,
+    "name": "Twenty",
+    "reason": "confidence=Medium",
+    "evidence": "https://twenty.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 6,
+    "name": "Podio",
+    "reason": "confidence=Low",
+    "evidence": "https://podio.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 7,
+    "name": "Zoho CRM",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://zoho.com/crm",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 8,
+    "name": "Close",
+    "reason": "confidence=Medium",
+    "evidence": "https://close.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 9,
+    "name": "Copper",
+    "reason": "confidence=Low",
+    "evidence": "https://copper.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 10,
+    "name": "DealCloud",
+    "reason": "confidence=Medium",
+    "evidence": "https://api.docs.dealcloud.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 11,
+    "name": "Zendesk",
+    "reason": "confidence=Medium",
+    "evidence": "https://zendesk.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 12,
+    "name": "Intercom",
+    "reason": "confidence=Medium",
+    "evidence": "https://intercom.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 13,
+    "name": "Freshdesk",
+    "reason": "confidence=Medium",
+    "evidence": "https://freshdesk.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 15,
+    "name": "Pylon",
+    "reason": "confidence=Medium",
+    "evidence": "https://usepylon.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 16,
+    "name": "LiveAgent",
+    "reason": "confidence=Medium; verdict=Unclear",
+    "evidence": "https://liveagent.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 17,
+    "name": "Plain",
+    "reason": "confidence=Medium",
+    "evidence": "https://plain.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 18,
+    "name": "Help Scout",
+    "reason": "confidence=Medium",
+    "evidence": "https://helpscout.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 19,
+    "name": "Gorgias",
+    "reason": "confidence=Medium",
+    "evidence": "https://gorgias.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 20,
+    "name": "Gladly",
+    "reason": "confidence=Medium",
+    "evidence": "https://gladly.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 21,
+    "name": "Slack",
+    "reason": "confidence=Medium",
+    "evidence": "https://slack.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 22,
+    "name": "Twilio",
+    "reason": "confidence=Medium",
+    "evidence": "https://twilio.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 23,
+    "name": "Zoho Cliq",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://zoho.com/cliq",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 24,
+    "name": "Lark (Larksuite)",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://open.larksuite.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 25,
+    "name": "Pumble",
+    "reason": "confidence=Medium",
+    "evidence": "https://pumble.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 26,
+    "name": "Discord",
+    "reason": "confidence=Low",
+    "evidence": "https://discord.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 27,
+    "name": "Telegram",
+    "reason": "confidence=Low",
+    "evidence": "https://core.telegram.org",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 28,
+    "name": "WhatsApp Business",
+    "reason": "confidence=Medium",
+    "evidence": "https://developers.facebook.com/docs/whatsapp",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 29,
+    "name": "Aircall",
+    "reason": "confidence=Medium",
+    "evidence": "https://aircall.io",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 30,
+    "name": "Vonage",
+    "reason": "confidence=Medium",
+    "evidence": "https://developer.vonage.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 31,
+    "name": "Google Ads",
+    "reason": "confidence=Low",
+    "evidence": "https://developers.google.com/google-ads",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 32,
+    "name": "Meta Ads",
+    "reason": "confidence=Medium",
+    "evidence": "https://developers.facebook.com/docs/marketing-apis",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 33,
+    "name": "LinkedIn Ads",
+    "reason": "confidence=Low",
+    "evidence": "https://learn.microsoft.com/linkedin/marketing",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 34,
+    "name": "GoHighLevel",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://highlevel.stoplight.io",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 35,
+    "name": "Mailchimp",
+    "reason": "confidence=Medium",
+    "evidence": "https://mailchimp.com/developer",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 36,
+    "name": "Klaviyo",
+    "reason": "confidence=Low",
+    "evidence": "https://developers.klaviyo.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 37,
+    "name": "systeme.io",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://systeme.io",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 38,
+    "name": "Pinterest",
+    "reason": "confidence=Medium",
+    "evidence": "https://developers.pinterest.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 39,
+    "name": "Threads (Meta)",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://developers.facebook.com/docs/threads",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 40,
+    "name": "SendGrid",
+    "reason": "confidence=Medium",
+    "evidence": "https://sendgrid.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 41,
+    "name": "Shopify",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://shopify.dev",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 42,
+    "name": "WooCommerce",
+    "reason": "confidence=Medium",
+    "evidence": "https://woocommerce.com/document/woocommerce-rest-api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 44,
+    "name": "Salesforce Commerce Cloud",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://developer.salesforce.com/docs/commerce",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 45,
+    "name": "Magento (Adobe Commerce)",
+    "reason": "confidence=Low",
+    "evidence": "https://developer.adobe.com/commerce",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 46,
+    "name": "Squarespace",
+    "reason": "confidence=Low",
+    "evidence": "https://developers.squarespace.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 47,
+    "name": "Ecwid",
+    "reason": "confidence=Medium",
+    "evidence": "https://api-docs.ecwid.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 48,
+    "name": "Gumroad",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://gumroad.com/api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 49,
+    "name": "Amazon Selling Partner",
+    "reason": "confidence=Medium",
+    "evidence": "https://developer-docs.amazon.com/sp-api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 50,
+    "name": "fanbasis",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://fanbasis.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 51,
+    "name": "DataForSEO",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://docs.dataforseo.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 52,
+    "name": "SE Ranking",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://seranking.com/api",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 54,
+    "name": "MrScraper",
+    "reason": "confidence=Medium",
+    "evidence": "https://docs.mrscraper.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 55,
+    "name": "Apify",
+    "reason": "confidence=Medium",
+    "evidence": "https://docs.apify.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 58,
+    "name": "Sherlock",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://github.com/sherlock-project/sherlock",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 59,
+    "name": "Waterfall.io",
+    "reason": "confidence=Medium",
+    "evidence": "https://waterfall.io",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 60,
+    "name": "Clay",
+    "reason": "confidence=Medium",
+    "evidence": "https://clay.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 61,
+    "name": "GitHub",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://github.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 62,
+    "name": "Vercel",
+    "reason": "confidence=Medium",
+    "evidence": "https://vercel.com/docs/rest-api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 65,
+    "name": "Supabase",
+    "reason": "confidence=Medium",
+    "evidence": "https://supabase.com/docs",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 66,
+    "name": "Neo4j",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://neo4j.com/docs/api",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 67,
+    "name": "Snowflake",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://docs.snowflake.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 68,
+    "name": "MongoDB Atlas",
+    "reason": "confidence=Medium",
+    "evidence": "https://mongodb.com/docs/atlas/api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 70,
+    "name": "Sentry",
+    "reason": "confidence=Low",
+    "evidence": "https://docs.sentry.io/api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 72,
+    "name": "Airtable",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://airtable.com/developers",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 73,
+    "name": "Linear",
+    "reason": "confidence=Medium",
+    "evidence": "https://developers.linear.app",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 74,
+    "name": "Jira",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://developer.atlassian.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 75,
+    "name": "Asana",
+    "reason": "confidence=Low",
+    "evidence": "https://developers.asana.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 76,
+    "name": "Monday.com",
+    "reason": "confidence=Medium",
+    "evidence": "https://developer.monday.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 77,
+    "name": "ClickUp",
+    "reason": "confidence=Medium",
+    "evidence": "https://clickup.com/api",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 79,
+    "name": "Smartsheet",
+    "reason": "confidence=Medium",
+    "evidence": "https://smartsheet.com/developers",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 80,
+    "name": "Harvest",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://help.getharvest.com/api-v2",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 82,
+    "name": "Plaid",
+    "reason": "confidence=Medium",
+    "evidence": "https://plaid.com/docs",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 83,
+    "name": "Binance",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://binance-docs.github.io",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 84,
+    "name": "Paygent Connect",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://paygent.co.jp",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 85,
+    "name": "iPayX",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://ipayx.ai/docs",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 86,
+    "name": "QuickBooks",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://developer.intuit.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 87,
+    "name": "Xero",
+    "reason": "confidence=Medium",
+    "evidence": "https://developer.xero.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 88,
+    "name": "Brex",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://developer.brex.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 89,
+    "name": "Ramp",
+    "reason": "confidence=Low",
+    "evidence": "https://docs.ramp.com",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 90,
+    "name": "PitchBook",
+    "reason": "fetch failed; confidence=Low; verdict=Unclear",
+    "evidence": "https://pitchbook.com",
+    "source": "pipeline-failed"
+  },
+  {
+    "id": 93,
+    "name": "Fathom",
+    "reason": "confidence=Medium",
+    "evidence": "https://fathom.video",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 94,
+    "name": "Consensus",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://consensus.app",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 96,
+    "name": "Devin",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://docs.devin.ai",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 97,
+    "name": "higgsfield",
+    "reason": "confidence=Medium",
+    "evidence": "https://higgsfield.ai/cli",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 98,
+    "name": "Mermaid CLI",
+    "reason": "confidence=Low; verdict=Unclear",
+    "evidence": "https://github.com/mermaid-js/mermaid-cli",
+    "source": "pipeline-fetched"
+  },
+  {
+    "id": 100,
+    "name": "Grain",
+    "reason": "confidence=Medium",
+    "evidence": "https://grain.com",
+    "source": "pipeline-fetched"
+  }
+]

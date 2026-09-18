@@ -1,0 +1,216 @@
+{
+  "evidence_note": "Analytics are based on the latest 100-record pipeline output plus two previously human spot-checked records. A successful fetch means the page was reachable; it does not mean every extracted field was independently verified. Low/medium-confidence records remain candidates for human review.",
+  "evidence_coverage": {
+    "total_apps": 100,
+    "pipeline_fetched": 91,
+    "pipeline_failed": 7,
+    "human_spot_checked": 2,
+    "verified": 2,
+    "requires_human_verification": 83
+  },
+  "source_distribution": {
+    "pipeline-fetched": 91,
+    "human-spot-checked": 2,
+    "pipeline-failed": 7
+  },
+  "auth_distribution": {
+    "Unknown (no auth keywords found on fetched page)": 67,
+    "API key (+ OAuth for apps)": 1,
+    "Unknown": 7,
+    "API key": 16,
+    "OAuth2 / API key": 5,
+    "OAuth2": 2,
+    "API key / Basic auth": 1,
+    "OAuth-based MCP": 1
+  },
+  "verdict_distribution": {
+    "Unclear": 30,
+    "Needs partnership": 29,
+    "Buildable": 21,
+    "Partial": 20
+  },
+  "selfserve_distribution": {
+    "Signals of self-serve found (free trial / free tier language)": 5,
+    "Signals of gating found (contact-sales / partner / enterprise-only language)": 32,
+    "Self-serve (trial workspace)": 1,
+    "Unknown": 7,
+    "Unknown (no explicit access-model language found on fetched page)": 55
+  },
+  "mcp_distribution": {
+    "No MCP mention found on this page": 53,
+    "Mentions MCP on this page": 38,
+    "Yes — official Attio MCP": 1,
+    "Unknown": 7,
+    "Official MCP server": 1
+  },
+  "category_distribution": {
+    "CRM and Sales": 9,
+    "CRM & Sales": 1,
+    "Support and Helpdesk": 10,
+    "Communications and Messaging": 10,
+    "Marketing Ads Email and Social": 10,
+    "Ecommerce": 10,
+    "Data SEO and Scraping": 10,
+    "Developer Infra and Data platforms": 10,
+    "Productivity and Project Management": 10,
+    "Finance and Fintech": 10,
+    "AI Research and Media-native": 10
+  },
+  "category_x_verdict": {
+    "CRM and Sales": {
+      "Unclear": 2,
+      "Needs partnership": 5,
+      "Partial": 1,
+      "Buildable": 1
+    },
+    "CRM & Sales": {
+      "Buildable": 1
+    },
+    "Support and Helpdesk": {
+      "Needs partnership": 9,
+      "Unclear": 1
+    },
+    "Communications and Messaging": {
+      "Needs partnership": 5,
+      "Unclear": 2,
+      "Partial": 3
+    },
+    "Marketing Ads Email and Social": {
+      "Partial": 4,
+      "Buildable": 1,
+      "Unclear": 3,
+      "Needs partnership": 2
+    },
+    "Ecommerce": {
+      "Unclear": 4,
+      "Buildable": 3,
+      "Partial": 3
+    },
+    "Data SEO and Scraping": {
+      "Unclear": 3,
+      "Buildable": 4,
+      "Partial": 1,
+      "Needs partnership": 2
+    },
+    "Developer Infra and Data platforms": {
+      "Unclear": 3,
+      "Needs partnership": 1,
+      "Buildable": 3,
+      "Partial": 3
+    },
+    "Productivity and Project Management": {
+      "Buildable": 4,
+      "Unclear": 3,
+      "Partial": 3
+    },
+    "Finance and Fintech": {
+      "Needs partnership": 1,
+      "Buildable": 2,
+      "Unclear": 6,
+      "Partial": 1
+    },
+    "AI Research and Media-native": {
+      "Needs partnership": 4,
+      "Buildable": 2,
+      "Unclear": 3,
+      "Partial": 1
+    }
+  },
+  "category_x_selfserve": {
+    "CRM and Sales": {
+      "Signals of self-serve found (free trial / free tier language)": 2,
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 5,
+      "Unknown": 1,
+      "Unknown (no explicit access-model language found on fetched page)": 1
+    },
+    "CRM & Sales": {
+      "Self-serve (trial workspace)": 1
+    },
+    "Support and Helpdesk": {
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 10
+    },
+    "Communications and Messaging": {
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 5,
+      "Signals of self-serve found (free trial / free tier language)": 1,
+      "Unknown (no explicit access-model language found on fetched page)": 4
+    },
+    "Marketing Ads Email and Social": {
+      "Unknown (no explicit access-model language found on fetched page)": 8,
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 2
+    },
+    "Ecommerce": {
+      "Unknown (no explicit access-model language found on fetched page)": 8,
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 1,
+      "Unknown": 1
+    },
+    "Data SEO and Scraping": {
+      "Unknown (no explicit access-model language found on fetched page)": 5,
+      "Unknown": 1,
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 3,
+      "Signals of self-serve found (free trial / free tier language)": 1
+    },
+    "Developer Infra and Data platforms": {
+      "Unknown (no explicit access-model language found on fetched page)": 7,
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 1,
+      "Unknown": 1,
+      "Signals of self-serve found (free trial / free tier language)": 1
+    },
+    "Productivity and Project Management": {
+      "Unknown (no explicit access-model language found on fetched page)": 10
+    },
+    "Finance and Fintech": {
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 1,
+      "Unknown (no explicit access-model language found on fetched page)": 6,
+      "Unknown": 3
+    },
+    "AI Research and Media-native": {
+      "Signals of gating found (contact-sales / partner / enterprise-only language)": 4,
+      "Unknown (no explicit access-model language found on fetched page)": 6
+    }
+  },
+  "low_confidence_or_unclear_apps": [
+    "Salesforce",
+    "Podio",
+    "Zoho CRM",
+    "Copper",
+    "LiveAgent",
+    "Zoho Cliq",
+    "Lark (Larksuite)",
+    "Discord",
+    "Telegram",
+    "Google Ads",
+    "LinkedIn Ads",
+    "GoHighLevel",
+    "Klaviyo",
+    "systeme.io",
+    "Threads (Meta)",
+    "Shopify",
+    "Salesforce Commerce Cloud",
+    "Magento (Adobe Commerce)",
+    "Squarespace",
+    "Gumroad",
+    "fanbasis",
+    "DataForSEO",
+    "SE Ranking",
+    "Sherlock",
+    "GitHub",
+    "Neo4j",
+    "Snowflake",
+    "Sentry",
+    "Airtable",
+    "Jira",
+    "Asana",
+    "Harvest",
+    "Binance",
+    "Paygent Connect",
+    "iPayX",
+    "QuickBooks",
+    "Brex",
+    "Ramp",
+    "PitchBook",
+    "Consensus",
+    "Devin",
+    "Mermaid CLI"
+  ],
+  "needs_human_verification_count": 83
+}

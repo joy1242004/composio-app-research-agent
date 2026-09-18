@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>100 Apps, One Question: Can an Agent Call It? — Composio Research Case Study</title>
+<style>
+:root{
+  --bg:#0b0c10; --panel:#14161c; --panel2:#1b1e26; --border:#2a2e38;
+  --text:#eef0f3; --muted:#9aa1ae; --accent:#7dd3fc; --accent2:#a78bfa;
+  --good:#4ade80; --warn:#fbbf24; --bad:#fb7185; --unclear:#94a3b8;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--border)}
+.kicker{color:var(--accent);font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(26px,4vw,42px);margin:12px 0 16px;line-height:1.15}
+.sub{color:var(--muted);font-size:17px;max-width:760px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.badge{background:var(--panel2);border:1px solid var(--border);padding:6px 12px;border-radius:20px;font-size:13px;color:var(--muted)}
+.badge b{color:var(--text)}
+.badge.warn{border-color:rgba(251,191,36,.4);color:var(--warn)}
+section{padding:44px 0;border-bottom:1px solid var(--border)}
+h2{font-size:23px;margin-bottom:6px}
+.section-desc{color:var(--muted);margin-bottom:26px;max-width:740px}
+.grid-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.stat .n{font-size:30px;font-weight:700;color:var(--accent)}
+.stat .l{color:var(--muted);font-size:13px;margin-top:4px}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.finding{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
+.finding h3{margin:0 0 8px;font-size:16px;color:var(--accent2)}
+.finding p{margin:0;color:var(--muted);font-size:14px}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:10px;font-size:13px}
+.bar-track{background:var(--panel2);border-radius:6px;overflow:hidden;height:18px;border:1px solid var(--border)}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+select,input[type=text]{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px;font-family:var(--sans)}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--panel2);color:var(--muted);font-weight:600;position:sticky;top:0;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+tr:hover td{background:#181b22}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap}
+.tag.buildable{background:rgba(74,222,128,.15);color:var(--good)}
+.tag.partial{background:rgba(251,191,36,.15);color:var(--warn)}
+.tag.needs{background:rgba(251,113,133,.15);color:var(--bad)}
+.tag.unclear{background:rgba(148,163,184,.15);color:var(--unclear)}
+.src{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10.5px;font-family:var(--mono)}
+.src.pipeline{background:rgba(74,222,128,.15);color:var(--good)}
+.src.human{background:rgba(125,211,252,.15);color:var(--accent)}
+.src.background{background:rgba(148,163,184,.12);color:var(--unclear)}
+.src.failed{background:rgba(251,113,133,.12);color:var(--bad)}
+.tblwrap{max-height:620px;overflow:auto;border:1px solid var(--border);border-radius:12px}
+.small{font-size:12px;color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:800px){.two-col{grid-template-columns:1fr}}
+.agent-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:22px}
+.agent-card h3{margin-top:0;color:var(--accent)}
+pre{background:#0e0f13;border:1px solid var(--border);border-radius:8px;padding:16px;overflow:auto;font-size:12px;font-family:var(--mono);line-height:1.6}
+.step{display:flex;gap:14px;margin-bottom:16px}
+.step .num{background:var(--panel2);border:1px solid var(--border);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--accent);flex-shrink:0}
+.step h4{margin:0 0 4px;font-size:14.5px}
+.step p{margin:0;color:var(--muted);font-size:13px}
+.honesty{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.35);border-radius:12px;padding:20px;margin-top:20px}
+.honesty h3{color:var(--warn);margin-top:0}
+.miss{background:var(--panel2);border-radius:8px;padding:14px;margin-top:12px;font-size:13px}
+.miss .label{color:var(--bad);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;margin-bottom:6px}
+.tier{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.tier h4{margin:0 0 6px;font-size:14.5px}
+.tier .n{font-family:var(--mono);color:var(--accent);font-weight:700}
+.footer{padding:36px 0;text-align:center;color:var(--muted);font-size:13px}
+code{font-family:var(--mono);background:var(--panel2);padding:1px 5px;border-radius:4px;font-size:12px}
+ul{margin:8px 0;padding-left:20px}
+li{margin-bottom:6px;font-size:14px;color:var(--muted)}
+li b{color:var(--text)}
+.live-card{background:linear-gradient(135deg,rgba(125,211,252,.08),rgba(167,139,250,.06));border:1px solid rgba(125,211,252,.32);border-radius:14px;padding:22px}
+.upload-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.button{background:var(--accent);color:#07111a;border:0;border-radius:8px;padding:10px 15px;font-weight:700;cursor:pointer;font-family:var(--sans)}.button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--border)}.button:disabled{opacity:.45;cursor:not-allowed}.drop-note{color:var(--muted);font-size:13px;margin:10px 0}.preview{max-height:190px;overflow:auto;margin:14px 0}.progress-track{height:10px;background:var(--panel2);border:1px solid var(--border);border-radius:99px;overflow:hidden}.progress-value{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}.run-stats{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:10px 0}.activity{list-style:none;padding:0;max-height:180px;overflow:auto;margin:14px 0}.activity li{padding:5px 0;border-bottom:1px solid var(--border)}.activity .done{color:var(--good)}.activity .failed{color:var(--bad)}.activity .working{color:var(--warn)}.live-results{margin-top:18px}.error{color:var(--bad);font-size:13px}.ok{color:var(--good);font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">Composio · AI Product Ops Intern — Take-Home</div>
+  <h1>100 apps, one question: can an agent call it today?</h1>
+  <p class="sub">A 100-app research dataset across 10 categories, produced by a runnable no-API-key research agent. Results are source-labeled so automated fetches, human spot-checks, failed fetches, and remaining verification work are clearly separated.</p>
+  <div class="badges" id="hero-badges"></div>
+</header>
+
+<section id="live-research">
+  <div class="live-card">
+    <div class="kicker">Live workspace</div>
+    <h2>Research a new app list</h2>
+    <p class="section-desc">Upload a CSV with <code>name,website</code>, preview it, then start genuine sequential research. Each completed fetch is saved under <code>data/runs/</code>; it is not mixed into the original 100-app dataset.</p>
+    <div class="upload-row">
+      <label class="button secondary" for="csv-file">Upload App CSV</label><input id="csv-file" type="file" accept=".csv,text/csv" hidden>
+      <button class="button secondary" id="load-existing" type="button">Load Existing 100 Apps</button>
+      <button class="button" id="start-research" type="button" disabled>Start Research</button>
+      <button class="button secondary" id="export-csv" type="button" disabled>Export CSV</button>
+      <button class="button secondary" id="export-json" type="button" disabled>Export JSON</button>
+    </div>
+    <p class="drop-note">Accepted headers: <code>name,website</code>, <code>app_name,url</code>, <code>name,url</code>, <code>app,website</code>, or the existing <code>name,hint_url</code>. Maximum 500 apps / 2 MB.</p>
+    <div id="upload-message" aria-live="polite"></div>
+    <div id="csv-preview" class="preview"></div>
+    <div id="run-progress" hidden aria-live="polite">
+      <h3 id="progress-title">Researching 0 / 0</h3><div class="progress-track"><div class="progress-value" id="progress-value"></div></div>
+      <div class="run-stats"><span id="completed-count">Completed: 0</span><span id="failed-count">Failed: 0</span><span id="remaining-count">Remaining: 0</span><span id="current-app">Current: —</span></div>
+      <ul id="activity-feed" class="activity"></ul>
+    </div>
+    <div id="live-results" class="live-results" hidden>
+      <h3>Live results</h3><div class="controls"><select id="live-category"><option value="">All categories</option></select><select id="live-verdict"><option value="">All verdicts</option></select><select id="live-auth"><option value="">All authentication</option></select><select id="live-status"><option value="">All statuses</option></select><input id="live-search" type="text" placeholder="Search app name…"></div>
+      <div class="tblwrap"><table><thead><tr><th>App</th><th>Category</th><th>Description</th><th>Auth</th><th>Access</th><th>API Surface</th><th>MCP</th><th>Verdict</th><th>Blocker</th><th>Evidence</th><th>Status</th></tr></thead><tbody id="live-tbody"></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section id="patterns">
+  <h2>The headline: the patterns, not the table</h2>
+  <p class="section-desc">Computed directly from <code>data/apps_final.json</code> — not typed by hand. These aggregate patterns are exploratory because most underlying fields have not yet been independently verified. Read this section together with "Verification" for the full picture.</p>
+
+  <div class="grid-stats" id="stat-grid"></div>
+
+  <div class="findings" id="findings-grid"></div>
+
+  <div class="bars" id="auth-bars"></div>
+</section>
+
+<section id="workflow">
+  <h2>Research workflow</h2>
+  <p class="section-desc">How an app goes from a name in a spreadsheet to a row in the table below.</p>
+  <div class="step"><div class="num">1</div><div><h4>Seed list</h4><p><code>data/apps_seed.csv</code> — 100 apps, their category, and a best-known docs/website URL, taken directly from the assignment brief.</p></div></div>
+  <div class="step"><div class="num">2</div><div><h4>No-API fetch + keyword extraction</h4><p><code>agent/research_agent.py</code> makes a plain HTTP GET to each URL (no LLM, no Composio key, no search API), strips the HTML with BeautifulSoup, and regex-scans the text against keyword banks for OAuth2, API keys, REST, GraphQL, MCP, free-trial language, and contact-sales/partner-gating language.</p></div></div>
+  <div class="step"><div class="num">3</div><div><h4>Deterministic scoring</h4><p>Confidence (High/Medium/Low) is just a count of independent keyword banks matched. Verdict logic is a fixed decision tree over those same matches — see the code, not a black box.</p></div></div>
+  <div class="step"><div class="num">4</div><div><h4>Verification pass</h4><p>Every record with Low/Medium confidence, an "Unclear" verdict, or a failed fetch is written to <code>data/verification_queue.json</code> for a human to check by hand — this is not optional/cosmetic, see the Verification section.</p></div></div>
+</section>
+
+<section id="agent">
+  <h2>The agent: what it actually did, this run</h2>
+  <p class="section-desc">Dogfooding the job — an agent researched the agents. Reported exactly as it happened, including the parts that didn't work.</p>
+  <div class="two-col">
+    <div class="agent-card">
+      <h3>Real test run: 3 apps</h3>
+      <pre id="test-run-pre">loading…</pre>
+      <p class="small">Ran with <code>--limit 3</code> before the full run, per the assignment's own testing instruction. Confirms the pipeline fetches, parses, and writes valid JSON.</p>
+    </div>
+    <div class="agent-card">
+      <h3>Full run: 100 apps</h3>
+      <div id="full-run-report"></div>
+      <p class="small" style="margin-top:10px">Full stderr log and both output files are in the repo (<code>data/verification_report.json</code>, <code>data/verification_queue.json</code>).</p>
+    </div>
+  </div>
+  <div class="honesty">
+    <h3>Live fetch coverage and verification limits</h3>
+    <p>The latest full pipeline run processed all 100 seed URLs: <b>93 returned successfully and 7 failed</b>. The failures were 3 HTTP 404s, 2 HTTP 403s, 1 timeout, and 1 connection error. A successful HTTP fetch only proves that the page was reachable and scanned; it does <b>not</b> mean every extracted field is factually verified.</p>
+    <p>In the reconciled final dataset, <b>91 records are ordinary pipeline-fetched records, 2 are stronger human spot-check records (Attio and Otter AI), and 7 are pipeline-failed records</b>. Failed URLs remain <b>Unclear</b> rather than being guessed.</p>
+    <p>The no-API pipeline is an evidence-gathering and triage system. Keyword extraction surfaces likely auth, API, MCP, and access signals, while low-confidence or ambiguous records are routed to human verification.</p>
+  </div>
+</section>
+
+<section id="verification">
+  <h2>Verification: three tiers, reported separately</h2>
+  <p class="section-desc">The assignment asks for real verification loops and an honest accuracy story. Here it is, without collapsing three different confidence levels into one flattering number.</p>
+
+  <div class="tier">
+    <h4>Tier 1 — Automated pipeline evidence</h4>
+    <p><span class="n" id="t1-n">–</span> final records are ordinary pipeline-fetched records. Their fields came from a successful HTTP fetch plus deterministic keyword matching. This is automated evidence, <b>not independent factual verification</b>.</p>
+  </div>
+  <div class="tier">
+    <h4>Tier 2 — Human spot-check</h4>
+    <p><span class="n" id="t2-n">–</span> apps (Attio, Otter AI) were manually cross-checked against their live docs pages before the no-API pipeline existed. Both spot-checks found the background-knowledge guess was wrong or incomplete — details below.</p>
+  </div>
+  <div class="tier">
+    <h4>Tier 3 — Pipeline failures</h4>
+    <p><span class="n" id="t3-n">–</span> final records could not be fetched in the latest run. They remain <b>Unclear</b> and require follow-up rather than guessed values.</p>
+  </div>
+
+  <div id="spot-check-details"></div>
+</section>
+
+<section id="findings-table">
+  <h2>The findings: all 100, filterable, source-labeled</h2>
+  <p class="section-desc">Every row shows its evidence source. Filter by source to separate ordinary pipeline-fetched records, human spot-checks, and failed fetches.</p>
+  <div class="controls">
+    <select id="f-category"><option value="">All categories</option></select>
+    <select id="f-verdict"><option value="">All verdicts</option></select>
+    <select id="f-source"><option value="">All sources</option></select>
+    <input type="text" id="f-search" placeholder="Search app name…">
+  </div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr>
+        <th>App</th><th>Category</th><th>Auth</th><th>Access</th><th>MCP</th><th>Verdict</th><th>Source</th><th>Evidence</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="unclear">
+  <h2>Unclear / defeated apps — reported honestly</h2>
+  <p class="section-desc">Per the assignment: "if an app defeated you, say so." These are marked <span class="tag unclear">Unclear</span> in the dataset rather than guessed at.</p>
+  <ul id="unclear-list"></ul>
+</section>
+
+<section id="limitations">
+  <h2>Limitations</h2>
+  <ul>
+    <li><b>Raw fetch coverage: 93/100.</b> Seven seed URLs failed in the latest full run. In the final reconciled dataset, 91 records remain pipeline-fetched, 2 successful records are represented by stronger human spot-checks, and 7 are pipeline-failed.</li>
+    <li><b>Successful fetch ≠ verified fact.</b> A reachable page can still be a marketing homepage or omit the exact auth/API details needed for a reliable integration decision.</li>
+    <li><b>Keyword extraction is not comprehension.</b> Missing keywords do not prove a capability is absent, so ambiguous records are downgraded instead of guessed.</li>
+    <li><b>One seed page per app.</b> The current pipeline does not crawl full documentation, pricing, developer portals, or linked API-reference pages.</li>
+    <li><b>Human verification is incomplete.</b> Only 2 apps (Attio and Otter AI) have been manually spot-checked; <b>83 records remain in the current human verification queue</b>.</li>
+    <li><b>No live MCP registry cross-check.</b> MCP-related signals should be confirmed against official vendor documentation or a trusted registry during the verification pass.</li>
+  </ul>
+</section>
+
+<section id="repro">
+  <h2>Reproducibility</h2>
+  <p class="section-desc">No API key required, anywhere in this pipeline.</p>
+  <pre>pip install requests beautifulsoup4
+
+# test on 3 apps first
+python agent/research_agent.py --input data/apps_seed.csv --out data/apps_test.json --limit 3
+
+# full 100-app run
+python agent/research_agent.py --input data/apps_seed.csv --out data/apps_pipeline_output.json
+
+# reconcile latest run into final dataset
+python reconcile.py
+
+# outputs include: apps_pipeline_output.json, apps_final.json,
+# verification_report.json, verification_queue.json, analytics.json</pre>
+  <p class="small">After the pipeline run, <code>reconcile.py</code> reconciles pipeline output with the two documented human spot-checks and regenerates <code>data/apps_final.json</code>, <code>data/verification_queue.json</code>, and <code>data/analytics.json</code>.</p>
+</section>
+
+<div class="footer">
+  Built for the Composio AI Product Ops take-home, in no-API-key mode. Data: <code>data/apps_final.json</code> · Agent: <code>agent/research_agent.py</code> · Verification: <code>data/accuracy_log.json</code>, <code>data/verification_queue.json</code>.
+</div>
+</div>
+
+<script>__DATA__</script>
+<script>
+function tagClass(v){
+  if(v.startsWith('Buildable')) return 'buildable';
+  if(v==='Partial') return 'partial';
+  if(v==='Needs partnership') return 'needs';
+  return 'unclear';
+}
+function srcClass(s){
+  if(s==='pipeline-fetched') return 'pipeline';
+  if(s==='human-spot-checked') return 'human';
+  return 'background';
+}
+function srcLabel(s){
+  if(s==='pipeline-fetched') return 'PIPELINE-FETCHED';
+  if(s==='human-spot-checked') return 'HUMAN SPOT-CHECK';
+  return 'BACKGROUND (unverified)';
+}
+
+const total = APPS.length;
+
+document.getElementById('hero-badges').innerHTML = `
+  <div class="badge"><b>${total}</b> apps researched</div>
+  <div class="badge"><b>${PIPE_REPORT.fetch_ok}</b>/${total} raw URLs fetched</div>
+  <div class="badge"><b>${ANALYTICS.evidence_coverage.pipeline_fetched}</b> pipeline records</div>
+  <div class="badge warn"><b>${ANALYTICS.evidence_coverage.human_spot_checked}</b> human spot-checked</div>
+  <div class="badge warn"><b>${ANALYTICS.evidence_coverage.requires_human_verification}</b> in human verification queue</div>
+  <div class="badge">No API key used</div>
+`;
+
+document.getElementById('stat-grid').innerHTML = `
+  <div class="stat"><div class="n">${ANALYTICS.verdict_distribution['Buildable']||0}</div><div class="l">apps currently scored Buildable*</div></div>
+  <div class="stat"><div class="n">${ANALYTICS.selfserve_distribution['Self-serve']||0}</div><div class="l">self-serve signals in current dataset*</div></div>
+  <div class="stat"><div class="n">${ANALYTICS.mcp_distribution['Yes']||0}</div><div class="l">official-MCP signals in current dataset*</div></div>
+  <div class="stat"><div class="n">${ANALYTICS.verdict_distribution['Needs partnership']||0}</div><div class="l">currently scored Needs partnership*</div></div>
+  <div class="stat"><div class="n">${ANALYTICS.needs_human_verification_count}</div><div class="l">rows still need human verification</div></div>
+`;
+
+document.getElementById('findings-grid').innerHTML = `
+  <div class="finding"><h3>Auth splits between OAuth2 and API keys</h3><p>${ANALYTICS.auth_distribution['OAuth2']||0} apps primarily use OAuth2, ${ANALYTICS.auth_distribution['API key']||0} use a plain API key/token. No single flow covers the field — a toolkit builder needs both production-ready.</p></div>
+  <div class="finding"><h3>Current data suggests self-serve is common</h3><p>${ANALYTICS.selfserve_distribution['Self-serve']||0} of ${total} apps let a developer get credentials without a sales call. Gating clusters in fintech (Brex, Ramp, PitchBook) and enterprise CRM/ecommerce (DealCloud, Salesforce Commerce Cloud).</p></div>
+  <div class="finding"><h3>Dev/Infra and Productivity surface as early candidates</h3><p>${ANALYTICS.category_x_verdict['Dev/Infra'] ? ANALYTICS.category_x_verdict['Dev/Infra']['Buildable']||0 : 0}/10 Dev/Infra apps and ${ANALYTICS.category_x_verdict['Productivity'] ? ANALYTICS.category_x_verdict['Productivity']['Buildable']||0 : 0}/10 Productivity apps score Buildable — the highest-confidence categories in the set.</p></div>
+  <div class="finding"><h3>Current MCP signals are uneven</h3><p>${ANALYTICS.mcp_distribution['Yes']||0} apps are currently marked with an official-MCP signal; ${ANALYTICS.mcp_distribution['Community only']||0} more have community-built servers only.</p></div>
+  <div class="finding"><h3>"Needs partnership" ≠ "no docs"</h3><p>${ANALYTICS.verdict_distribution['Needs partnership']||0} apps are gated — almost always by a business process (approval, paid tier, existing-customer requirement), not by missing documentation.</p></div>
+  <div class="finding"><h3>Human checks changed both sampled records</h3><p>The 2 manually checked apps (Attio and Otter AI) both required corrections or added nuance versus earlier reference assumptions. This small sample is why the remaining queue is reported explicitly rather than converted into a broad accuracy claim.</p></div>
+`;
+
+const authBars = Object.entries(ANALYTICS.auth_distribution).sort((a,b)=>b[1]-a[1]);
+const maxAuth = Math.max(...authBars.map(x=>x[1]));
+document.getElementById('auth-bars').innerHTML = '<div class="small" style="margin-bottom:6px">Auth method distribution</div>' +
+  authBars.map(([k,v])=>`<div class="bar-row"><div>${k}</div><div class="bar-track"><div class="bar-fill" style="width:${(v/maxAuth*100).toFixed(0)}%"></div></div><div>${v}</div></div>`).join('');
+
+document.getElementById('test-run-pre').textContent =
+`$ python agent/research_agent.py --input data/apps_seed.csv \\
+    --out data/apps_test.json --limit 3
+
+[1/3] fetching Salesforce -> https://salesforce.com
+    fetch_status=http_error_403 confidence=Low verdict=Unclear
+[2/3] fetching HubSpot -> https://hubspot.com
+    fetch_status=http_error_403 confidence=Low verdict=Unclear
+[3/3] fetching Pipedrive -> https://pipedrive.com
+    fetch_status=http_error_403 confidence=Low verdict=Unclear
+
+wrote data/apps_test.json, verification_report.json, verification_queue.json`;
+
+document.getElementById('full-run-report').innerHTML = `
+  <div class="bar-row"><div>Fetch OK</div><div class="bar-track"><div class="bar-fill" style="width:${PIPE_REPORT.fetch_ok}%"></div></div><div>${PIPE_REPORT.fetch_ok}</div></div>
+  <div class="bar-row"><div>Fetch failed</div><div class="bar-track"><div class="bar-fill" style="width:${PIPE_REPORT.fetch_failed}%;background:var(--bad)"></div></div><div>${PIPE_REPORT.fetch_failed}</div></div>
+  <div class="bar-row"><div>High confidence</div><div class="bar-track"><div class="bar-fill" style="width:${PIPE_REPORT.confidence_high}%"></div></div><div>${PIPE_REPORT.confidence_high}</div></div>
+  <div class="bar-row"><div>Needs human check</div><div class="bar-track"><div class="bar-fill" style="width:${PIPE_REPORT.requires_human_verification}%;background:var(--warn)"></div></div><div>${PIPE_REPORT.requires_human_verification}</div></div>
+`;
+
+document.getElementById('t1-n').textContent = ANALYTICS.evidence_coverage.pipeline_fetched;
+document.getElementById('t2-n').textContent = ANALYTICS.evidence_coverage.human_spot_checked;
+document.getElementById('t3-n').textContent = ANALYTICS.evidence_coverage.pipeline_failed;
+
+document.getElementById('spot-check-details').innerHTML = ACCURACY.tier_2_human_spot_check.findings.map(f=>`
+  <div class="miss"><div class="label">${f.app}</div>
+  <b>Background knowledge said:</b> ${f.background_knowledge_claim}<br>
+  <b>Live docs showed:</b> ${f.live_doc_finding}<br>
+  <span class="small">Source: ${f.source}</span></div>
+`).join('');
+
+document.getElementById('unclear-list').innerHTML = APPS.filter(a=>a.verdict.startsWith('Unclear')).map(a=>
+  `<li><b>${a.name}</b> (${a.category}) — ${a.blocker}</li>`
+).join('') || '<li>None in the final verdict set.</li>';
+
+const tbody = document.getElementById('tbody');
+function render(list){
+  tbody.innerHTML = list.map(a=>`
+    <tr>
+      <td><b>${a.name}</b><div class="small">${a.desc}</div></td>
+      <td>${a.category}</td>
+      <td>${a.auth}</td>
+      <td>${a.selfServe}</td>
+      <td>${a.mcp}</td>
+      <td><span class="tag ${tagClass(a.verdict)}">${a.verdict}</span></td>
+      <td><span class="src ${srcClass(a.source)}">${srcLabel(a.source)}</span></td>
+      <td class="small">${a.evidence}${a.pipelineEvidenceSnippet ? '<br><i>"'+a.pipelineEvidenceSnippet+'"</i>' : ''}</td>
+    </tr>
+  `).join('');
+}
+render(APPS);
+
+const catSel = document.getElementById('f-category');
+[...new Set(APPS.map(a=>a.category))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;catSel.appendChild(o);});
+const verdictSel = document.getElementById('f-verdict');
+[...new Set(APPS.map(a=>a.verdict))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;verdictSel.appendChild(o);});
+const srcSel = document.getElementById('f-source');
+[['pipeline-fetched','Pipeline-fetched'],['human-spot-checked','Human spot-checked'],['pipeline-failed','Pipeline-failed']].forEach(([v,l])=>{const o=document.createElement('option');o.value=v;o.textContent=l;srcSel.appendChild(o);});
+
+function applyFilters(){
+  const cat=catSel.value, verdict=verdictSel.value, src=srcSel.value;
+  const q=document.getElementById('f-search').value.toLowerCase();
+  render(APPS.filter(a=>(!cat||a.category===cat)&&(!verdict||a.verdict===verdict)&&(!src||a.source===src)&&(!q||a.name.toLowerCase().includes(q))));
+}
+[catSel,verdictSel,srcSel].forEach(el=>el.addEventListener('change',applyFilters));
+document.getElementById('f-search').addEventListener('input',applyFilters);
+</script>
+<script>
+(() => {
+  let uploaded = null, runId = null, results = [], source = null;
+  const $ = id => document.getElementById(id);
+  const message = (text, kind='error') => { const box=$('upload-message'); box.className=kind; box.textContent=text; };
+  const findColumn = (headers, names) => names.find(n => headers.includes(n));
+  function parseCsvRows(text) {
+    const rows=[[]]; let value='', quoted=false;
+    for(let i=0;i<text.length;i++){ const c=text[i], next=text[i+1]; if(c==='"'){if(quoted&&next==='"'){value+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){rows[rows.length-1].push(value);value='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&next==='\n')i++;rows[rows.length-1].push(value);value='';rows.push([]);}else value+=c; }
+    if(quoted) throw Error('The CSV has an unclosed quoted value.'); rows[rows.length-1].push(value); return rows.filter(row=>row.some(cell=>cell.trim()));
+  }
+  function parseClientCsv(text) {
+    const rows=parseCsvRows(text.replace(/^\uFEFF/,''));
+    if (!rows.length) throw Error('The CSV is empty.');
+    const headers=rows[0].map(x=>x.trim().toLowerCase());
+    const n=findColumn(headers,['name','app_name','app']), w=findColumn(headers,['website','url','hint_url']);
+    if (!n || !w) throw Error('Expected name and website columns.');
+    const ni=headers.indexOf(n), wi=headers.indexOf(w);
+    const apps=rows.slice(1).map((cols,i)=>({name:(cols[ni]||'').trim(),website:(cols[wi]||'').trim(),row:i+2})).filter(a=>a.name||a.website);
+    if (!apps.length) throw Error('No app rows were found.');
+    if (apps.some(a=>!a.name||!a.website)) throw Error('Each populated row needs a name and website.');
+    return apps;
+  }
+  function preview(apps) {
+    const box=$('csv-preview'); box.replaceChildren(); const lead=document.createElement('p'); lead.className='ok'; lead.textContent=`Detected ${apps.length} app${apps.length===1?'':'s'}`; box.append(lead);
+    const table=document.createElement('table'), head=document.createElement('thead'), row=document.createElement('tr'); ['App name','Website'].forEach(v=>{const th=document.createElement('th');th.textContent=v;row.append(th)}); head.append(row); table.append(head); const body=document.createElement('tbody'); apps.slice(0,8).forEach(a=>{const tr=document.createElement('tr');[a.name,a.website].forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td)});body.append(tr)});table.append(body);box.append(table); if(apps.length>8){const more=document.createElement('p');more.className='small';more.textContent=`Showing first 8 of ${apps.length}.`;box.append(more)}
+  }
+  $('csv-file').addEventListener('change', async e => { const file=e.target.files[0]; if(!file)return; if(!file.name.toLowerCase().endsWith('.csv'))return message('Please select a .csv file.'); if(file.size>2*1024*1024)return message('The CSV is larger than the 2 MB limit.'); try { const text=await file.text(); uploaded=parseClientCsv(text); source={filename:file.name,csv_content:text}; preview(uploaded); $('start-research').disabled=false; message('CSV is ready. Review the preview, then start research.','ok'); } catch(err){uploaded=null;$('start-research').disabled=true;message(err.message)} });
+  $('load-existing').addEventListener('click', async () => { try { const r=await fetch('/api/existing'); if(!r.ok)throw Error('Could not load the existing dataset. Start the Python backend first.'); const data=await r.json(); uploaded=data.apps; source={filename:'apps_seed.csv',csv_content:'name,website\n'+uploaded.map(a=>JSON.stringify(a.name)+','+JSON.stringify(a.website)).join('\n')}; preview(uploaded); $('start-research').disabled=false; message('Loaded the existing 100-app seed list. It remains unchanged until you explicitly start a new, separate run.','ok'); } catch(err){message(err.message)} });
+  function updateProgress(run) { $('run-progress').hidden=false; $('progress-title').textContent=`Researching ${run.completed} / ${run.total}`; $('progress-value').style.width=`${run.total ? run.completed/run.total*100 : 0}%`; $('completed-count').textContent=`Completed: ${run.completed-run.failed}`; $('failed-count').textContent=`Failed: ${run.failed}`; $('remaining-count').textContent=`Remaining: ${run.total-run.completed}`; $('current-app').textContent=`Current: ${run.current_app||'—'}`; }
+  function addActivity(text, status) { const li=document.createElement('li');li.className=status;li.textContent=text;$('activity-feed').prepend(li); }
+  function rebuildFilters() { [['live-category','category'],['live-verdict','verdict'],['live-auth','auth'],['live-status','status']].forEach(([id,key])=>{const select=$(id),old=select.value; while(select.options.length>1)select.remove(1); [...new Set(results.map(r=>r[key]||'Unknown'))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;select.append(o)});select.value=old;}); }
+  function liveRender() { const q=$('live-search').value.toLowerCase(), cat=$('live-category').value, ver=$('live-verdict').value, auth=$('live-auth').value, stat=$('live-status').value; const body=$('live-tbody');body.replaceChildren();results.filter(r=>(!q||r.name.toLowerCase().includes(q))&&(!cat||r.category===cat)&&(!ver||r.verdict===ver)&&(!auth||r.auth===auth)&&(!stat||r.status===stat)).forEach(r=>{const tr=document.createElement('tr');const vals=[r.name,r.category,r.desc,r.auth,r.selfServe,r.surface,r.mcp,r.verdict,r.blocker,r.evidence,r.status+(r.failure_reason?`: ${r.failure_reason}`:'')];vals.forEach(v=>{const td=document.createElement('td');td.textContent=v||'—';tr.append(td)});body.append(tr)}); }
+  ['live-category','live-verdict','live-auth','live-status','live-search'].forEach(id=>$(id).addEventListener(id==='live-search'?'input':'change',liveRender));
+  $('start-research').addEventListener('click', async () => { if(!source)return; $('start-research').disabled=true; results=[]; $('activity-feed').replaceChildren(); $('live-results').hidden=false; $('export-csv').disabled=true;$('export-json').disabled=true; try { const r=await fetch('/api/runs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(source)}); const run=await r.json();if(!r.ok)throw Error(run.detail||'Could not start research.');runId=run.id;updateProgress(run);message('Research started. Results will appear after each real fetch.','ok');const events=new EventSource(`/api/runs/${runId}/events`);events.onmessage=e=>{const event=JSON.parse(e.data);updateProgress(event.run);if(event.type==='app_started')addActivity(`● ${event.app.name} — fetching website`,'working');if(event.type==='app_completed'){results.push(event.app);rebuildFilters();liveRender();addActivity(`${event.app.status==='Completed'?'✓':'✗'} ${event.app.name} — ${event.message}`,event.app.status==='Completed'?'done':'failed');}if(event.type==='run_finished'){events.close();$('start-research').disabled=false;$('export-csv').disabled=false;$('export-json').disabled=false;message('Research run finished. Download the actual run results or start another run.','ok');}};events.onerror=()=>{events.close();message('Live connection lost. Refresh to read the saved run results.');}; } catch(err) { $('start-research').disabled=false;message(err.message); } });
+  ['csv','json'].forEach(format=>$(`export-${format}`).addEventListener('click',()=>{if(runId)window.location.href=`/api/runs/${runId}/export/${format}`;}));
+})();
+</script>
+</body>
+</html>

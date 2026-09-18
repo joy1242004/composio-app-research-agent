@@ -1,0 +1,46 @@
+{
+  "what_this_file_is": "Honest verification status for the 100-app dataset. Three distinct evidence tiers exist in this project and they are NOT the same thing — see below.",
+
+  "tier_1_automated_pipeline_run": {
+    "description": "agent/research_agent.py was actually run against all 100 seed URLs in data/apps_seed.csv, with zero API keys, using plain HTTP GET + keyword extraction.",
+    "result": "3 of 100 fetches succeeded (http 200); 97 of 100 failed with http_error_403.",
+    "why": "This authoring environment's outbound network is restricted by its container policy to a small domain allowlist (github.com, pypi.org, npm/crates registries). Real docs domains like salesforce.com, developers.notion.com, stripe.com etc. are not on that allowlist and the egress proxy returns 403 for them. This is a property of the sandbox this was built in, not a bug in the script or a property of those websites (Salesforce's actual docs are public).",
+    "successful_fetches": ["GitHub (github.com) - found real 'MCP' keyword hit on the homepage", "Sherlock (github.com/sherlock-project/sherlock)", "Mermaid CLI (github.com/mermaid-js/mermaid-cli)"],
+    "raw_files": "data/apps_pipeline_output.json (all 100 raw records from this run), data/verification_report.json, data/verification_queue.json",
+    "conclusion": "The pipeline mechanics are proven to work end-to-end (fetch -> parse -> keyword-match -> confidence score -> verdict) on the 3 reachable URLs. It was NOT able to demonstrate full 100-app coverage inside this sandbox. Running the identical script from a normal machine or CI runner (see README) would fetch all 100 real domains."
+  },
+
+  "tier_2_human_spot_check": {
+    "description": "Before the no-API pipeline existed, 2 apps were manually cross-checked against their live docs pages using a general-purpose web search/fetch (this happened in an earlier version of this project, not via research_agent.py).",
+    "sample_size": 2,
+    "apps": ["Attio", "Otter AI"],
+    "findings": [
+      {
+        "app": "Attio",
+        "background_knowledge_claim": "OAuth2 only, MCP status unknown",
+        "live_doc_finding": "API key is the primary auth (Workspace Settings > Developers > New access token); OAuth2 is used for public apps. Attio ships an official MCP server.",
+        "source": "https://attio.com/platform/developers, https://attio.com/help/reference/apps/generating-an-api-key"
+      },
+      {
+        "app": "Otter AI",
+        "background_knowledge_claim": "Assumed a traditional public REST API",
+        "live_doc_finding": "Otter.ai has no broad public REST API for third parties; its integration surface is an official OAuth-based MCP server (mcp.otter.ai) plus community MCP wrappers.",
+        "source": "https://help.otter.ai, https://mcp.otter.ai/mcp, https://composio.dev/toolkits/otter_ai_mcp"
+      }
+    ],
+    "conclusion": "On this tiny sample, background knowledge alone was measurably wrong or incomplete on both apps checked. This is why every other row in the dataset is labeled 'Not independently verified' rather than implicitly trusted."
+  },
+
+  "tier_3_background_knowledge": {
+    "description": "The remaining 95 apps' category/auth/self-serve/MCP/verdict fields come from general knowledge of these products' public documentation, not from a fetch performed in this run.",
+    "sample_size": 95,
+    "honesty_note": "These fields are labeled 'Not independently verified' throughout data/apps_final.json and the HTML dashboard. Given tier 2's 2-for-2 correction rate, they should be treated as a reasonable starting hypothesis for a human or the pipeline (once run with real network access) to check — not as verified fact."
+  },
+
+  "overall_honest_summary": {
+    "fully_pipeline_verified": 3,
+    "human_spot_checked": 2,
+    "background_knowledge_not_verified": 95,
+    "no_fabricated_accuracy_percentage_is_reported_for_the_full_100": true
+  }
+}

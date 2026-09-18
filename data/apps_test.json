@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "category": "CRM and Sales",
+    "desc": "Evidence pulled from https://salesforce.com",
+    "auth": "Unknown (no auth keywords found on fetched page)",
+    "selfServe": "Signals of self-serve found (free trial / free tier language)",
+    "mcp": "No MCP mention found on this page",
+    "surface": "Unknown (no API-surface keywords found)",
+    "verdict": "Unclear",
+    "blocker": "Insufficient evidence on the fetched page.",
+    "evidence": "https://salesforce.com",
+    "evidenceSnippet": "credit card required. Free for 30 days Try for free Salesforce CRM FAQs What is Salesforce?",
+    "confidence": "Low",
+    "verified": false,
+    "matched_terms": [
+      "free_trial"
+    ],
+    "fetch_status": "ok"
+  },
+  {
+    "id": 2,
+    "name": "HubSpot",
+    "category": "CRM and Sales",
+    "desc": "Evidence pulled from https://hubspot.com",
+    "auth": "Unknown (no auth keywords found on fetched page)",
+    "selfServe": "Signals of gating found (contact-sales / partner / enterprise-only language)",
+    "mcp": "No MCP mention found on this page",
+    "surface": "Unknown (no API-surface keywords found)",
+    "verdict": "Needs partnership",
+    "blocker": "Page language suggests a sales/partner gate before API access.",
+    "evidence": "https://hubspot.com",
+    "evidenceSnippet": "Fran\u00e7ais High Contrast Customer Support Contact Sales Close Search Log in About About About U",
+    "confidence": "Medium",
+    "verified": false,
+    "matched_terms": [
+      "contact_sales",
+      "partner_gated"
+    ],
+    "fetch_status": "ok"
+  },
+  {
+    "id": 3,
+    "name": "Pipedrive",
+    "category": "CRM and Sales",
+    "desc": "Evidence pulled from https://pipedrive.com",
+    "auth": "Unknown (no auth keywords found on fetched page)",
+    "selfServe": "Signals of gating found (contact-sales / partner / enterprise-only language)",
+    "mcp": "Mentions MCP on this page",
+    "surface": "Unknown (no API-surface keywords found)",
+    "verdict": "Needs partnership",
+    "blocker": "Page language suggests a sales/partner gate before API access.",
+    "evidence": "https://pipedrive.com",
+    "evidenceSnippet": "ent Sales automation Projects Pipedrive MCP Reporting and analytics Email sync and",
+    "confidence": "High",
+    "verified": false,
+    "matched_terms": [
+      "contact_sales",
+      "free_trial",
+      "mcp",
+      "partner_gated"
+    ],
+    "fetch_status": "ok"
+  }
+]
